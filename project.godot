@@ -59,6 +59,17 @@ interact={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="agua"
+2d_physics/layer_3="chao"
+2d_physics/layer_4="grama"
+2d_physics/layer_5="elevação"
+2d_physics/layer_6="objetos"
+2d_physics/layer_7="inimigos"
+2d_physics/layer_8="npc"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
