@@ -1,0 +1,72 @@
+[gd_scene load_steps=14 format=3 uid="uid://klbc2v2x4tvg"]
+
+[ext_resource type="Script" uid="uid://dbreibj671hdg" path="res://scripts/armadilha.gd" id="1_ch5qi"]
+[ext_resource type="Texture2D" uid="uid://cju365oscospy" path="res://assets/cenario/items and trap_animation/peaks/peaks_1.png" id="2_tldbl"]
+[ext_resource type="Texture2D" uid="uid://wkfpxyq8771w" path="res://assets/cenario/items and trap_animation/peaks/peaks_2.png" id="3_tu6wu"]
+[ext_resource type="Texture2D" uid="uid://6gq3724u058" path="res://assets/cenario/items and trap_animation/peaks/peaks_3.png" id="4_apuje"]
+[ext_resource type="Texture2D" uid="uid://l1i6obwj26y8" path="res://assets/cenario/items and trap_animation/peaks/peaks_4.png" id="5_5kilv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj4ok"]
+atlas = ExtResource("2_tldbl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjl5m"]
+atlas = ExtResource("3_tu6wu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlc4h"]
+atlas = ExtResource("4_apuje")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mudqx"]
+atlas = ExtResource("5_5kilv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oinfx"]
+atlas = ExtResource("3_tu6wu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j57jw"]
+atlas = ExtResource("2_tldbl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_blexk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj4ok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjl5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlc4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mudqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oinfx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j57jw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4axk"]
+size = Vector2(16, 16)
+
+[node name="armadilha" type="Area2D"]
+script = ExtResource("1_ch5qi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_blexk")
+autoplay = "default"
+frame = 1
+frame_progress = 0.21108
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t4axk")
