@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed: float = 100.0
+@export var speed: float = 80.0
 @export var max_health: int = 10
 
 var health: int = max_health
@@ -13,6 +13,11 @@ var ataque = 10
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var area_attack: Area2D = $AreaAttack
+@onready var life_bar: ProgressBar = $ProgressBar
+
+func _ready() -> void:
+	life_bar.max_value = max_health
+	life_bar.value = health
 
 func _physics_process(_delta: float) -> void:
 	if is_attacking:
@@ -95,6 +100,7 @@ func take_damage(amount: int):
 
 	health -= amount
 	emit_signal("health_changed", health)
+	life_bar.value = health
 
 	if health <= 0:
 		die()
@@ -103,3 +109,5 @@ func die():
 	anim_sprite.play("Die")
 	set_process(false)
 	set_physics_process(false)
+	await get_tree().create_timer(2.0).timeout
+	get_tree().reload_current_scene()

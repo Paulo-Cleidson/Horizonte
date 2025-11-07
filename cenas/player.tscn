@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dr5d4qw8m7a0x"]
+[gd_scene load_steps=62 format=3 uid="uid://dr5d4qw8m7a0x"]
 
 [ext_resource type="Texture2D" uid="uid://byq4d8ou2rmvq" path="res://assets/player/player_idle.png" id="1_8or6t"]
 [ext_resource type="Script" uid="uid://beboj5ctr6b7g" path="res://scripts/player.gd" id="1_15dsx"]
@@ -767,7 +767,13 @@ _data = {
 &"SlashRight": SubResource("Animation_58mxu")
 }
 
-[node name="player" type="CharacterBody2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15dsx"]
+bg_color = Color(0.778154, 5.20053e-05, 0.103422, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8v4ht"]
+bg_color = Color(0.20056, 0.514631, 0.232749, 1)
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(0.4, 0.4)
 collision_mask = 126
 script = ExtResource("1_15dsx")
@@ -801,5 +807,16 @@ libraries = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -20.0
+offset_top = -30.0
+offset_right = 19.0
+offset_bottom = -23.0
+theme_override_styles/background = SubResource("StyleBoxFlat_15dsx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8v4ht")
+max_value = 10.0
+value = 10.0
+show_percentage = false
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

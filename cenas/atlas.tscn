@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://cggmc75d4y8uw"]
 
-[ext_resource type="Script" uid="uid://cl30bmhtxfqt6" path="res://scripts/atlas.gd" id="1_ajsjp"]
+[ext_resource type="Script" uid="uid://eao0visxe4mt" path="res://scripts/atlas.gd" id="1_ajsjp"]
 [ext_resource type="Texture2D" uid="uid://b8efu362jwthl" path="res://assets/npcs/atlas.png" id="1_oxa6v"]
 [ext_resource type="Texture2D" uid="uid://b8xq8o3r6cxy1" path="res://assets/others/exclamation_mark.png" id="3_x6ud6"]
 
@@ -91,9 +91,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jpmpg")
 }],
-"loop": false,
+"loop": true,
 "name": &"idle",
-"speed": 8.0
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oxa6v"]
@@ -115,11 +115,15 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [node name="Atlas" type="CharacterBody2D"]
+collision_layer = 32
 script = ExtResource("1_ajsjp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_xxlpo")
 animation = &"idle"
+frame = 11
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
